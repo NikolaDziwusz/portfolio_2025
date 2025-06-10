@@ -31,7 +31,7 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="hidden md:block max-h-[10vh] border-b z-50 border-slate-700/50 bg-slate-900/80 backdrop-blur-sm sticky top-0">
+      <nav className="hidden md:block max-h-[10vh] border-b z-50  border-slate-700/50 bg-slate-900/80 backdrop-blur-sm sticky top-0">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo Button */}
@@ -51,8 +51,8 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
                   variant="ghost"
                   className={`h-16 px-6 rounded-none border-r border-slate-700/50 font-mono text-sm transition-all relative ${
                     activeSection === tab.id
-                      ? "bg-slate-800/50 text-white"
-                      : "text-slate-400 hover:text-white hover:bg-slate-800/30"
+                      ? "text-orange-400 hover:text-orange-400 "
+                      : "text-slate-400 hover:text-orange-400  hover:bg-opacity-20"
                   }`}
                   onClick={() => setActiveSection(tab.id)}
                 >
@@ -76,8 +76,8 @@ export function Navigation({ activeSection, setActiveSection }: NavigationProps)
                 variant="ghost"
                 className={`h-16 px-6 rounded-none font-mono text-sm transition-all relative ${
                   activeSection === "_contact-me"
-                    ? "bg-slate-800/50 text-white"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/30"
+                    ? "text-orange-400 hover:text-orange-400 "
+                    : "text-slate-400 hover:text-orange-400 hover:bg-opacity-20"
                 }`}
                 onClick={() => setActiveSection("_contact-me")}
               >
