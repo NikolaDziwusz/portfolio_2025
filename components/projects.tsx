@@ -340,7 +340,7 @@ export function Projects() {
                   <div
                       key={project.id}
                       onClick={() => handleProjectClick(project)}
-                      className={`group relative bg-gradient-to-br from-slate-800/40 to-slate-900/60 border border-slate-700/50 rounded-xl overflow-hidden hover:border-teal-500/50 transition-all duration-500 backdrop-blur-sm cursor-pointer transform hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/10 ${
+                      className={`group relative bg-gradient-to-br from-slate-800/40 to-slate-900/60 border border-slate-700/50 rounded-xl overflow-hidden hover:border-teal-500/50 transition-all duration-500 backdrop-blur-sm cursor-pointer transform ${project.name !== 'Samsung-CMS' ? 'hover:scale-105' : ''} hover:shadow-2xl hover:shadow-teal-500/10 ${
                           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                       } ${project.github === "#" ? "cursor-not-allowed opacity-75" : ""}`}
                       style={{ animationDelay: `${400 + index * 100}ms` }}
@@ -497,4 +497,6 @@ export function Projects() {
       </section>
   )
 }
+
+
 
