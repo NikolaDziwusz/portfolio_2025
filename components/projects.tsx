@@ -8,7 +8,6 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 
 export function Projects() {
   const [selectedTechnologies, setSelectedTechnologies] = useState<string[]>([])
-  const [activeTab, setActiveTab] = useState("all")
   const [isVisible, setIsVisible] = useState(false)
   const [isFilterOpen, setIsFilterOpen] = useState(false)
 
@@ -213,7 +212,7 @@ export function Projects() {
   }
 
   return (
-      <section className="min-h-screen flex flex-col lg:flex-row">
+      <section className="min-h-full flex flex-col lg:flex-row">
         {/* Sidebar (Desktop/Tablet only) */}
         <div
             className={`hidden lg:flex w-80 bg-slate-900/50 border-r border-slate-700/50 flex-col transition-all duration-700 ${

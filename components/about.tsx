@@ -3,76 +3,74 @@
 import {useState, useEffect} from "react"
 import {ChevronDown, ChevronRight, Folder, File, Mail, Phone, X} from "lucide-react"
 
-// --- Add simple syntax highlighter ---
-function escapeHtml(str: string) {
-    return str.replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/\"/g, "&quot;")
-        .replace(/'/g, "&#39;");
-}
+// --- Use PrismJS for syntax highlighting ---
+import Prism from "prismjs";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-typescript";
+import "prismjs/themes/prism-tomorrow.css"; // You can use a different Prism theme or your own
 
-function highlightCode(code: string) {
-    // Escape HTML first
-    code = escapeHtml(code);
-
-    // Store matches to avoid double-highlighting
-    const matches: string[] = [];
-    let i = 0;
-
-    // Highlight comments and strings first, replace with placeholders
-    code = code.replace(/(\/\/[^\n]*|\/\*[\s\S]*?\*\/|"[^"]*"|'[^']*'|`[^`]*`)/g, (m) => {
-        matches.push(m);
-        return `___PLACEHOLDER_${i++}___`;
-    });
-
-    // Keywords
-    code = code.replace(
-        /\b(const|let|var|function|return|if|else|for|while|switch|case|break|default|import|from|export|class|extends|new|public|private|protected|static|interface|type|enum|implements|readonly|async|await)\b/g,
-        '<span class="text-blue-400">$1</span>'
-    );
-    // Types
-    code = code.replace(
-        /\b(string|number|boolean|void|any|unknown|never|object|Array|Record|Partial|Pick|Omit|typeof|instanceof)\b/g,
-        '<span class="text-purple-400">$1</span>'
-    );
-    // Numbers
-    code = code.replace(
-        /\b(\d+)\b/g,
-        '<span class="text-yellow-400">$1</span>'
-    );
-    // Variable names after const/let/var
-    code = code.replace(
-        /\b(const|let|var)\s+([a-zA-Z_][a-zA-Z0-9_]*)/g,
-        '<span class="text-blue-400">$1</span> <span class="text-white">$2</span>'
-    );
-    // Equal signs
-    code = code.replace(
-        /(=)/g,
-        '<span class="text-slate-300">$1</span>'
-    );
-    // Array brackets
-    code = code.replace(
-        /(\[|\])/g,
-        '<span class="text-yellow-400">$1</span>'
-    );
-    // Object brackets
-    code = code.replace(
-        /(\{|\})/g,
-        '<span class="text-yellow-400">$1</span>'
-    );
-
-    // Restore comments and strings
-    code = code.replace(/___PLACEHOLDER_(\d+)___/g, (_, n) => {
-        const m = matches[Number(n)];
-        if (/^\/\//.test(m) || /^\/\*/.test(m)) {
-            return `<span class=\"text-slate-500\">${m}</span>`;
-        }
-        return `<span class=\"text-orange-400\">${m}</span>`;
-    });
-
+function highlightCode(code: string, language: string = "typescript") {
+    // Prism will escape HTML for us
+    if (Prism.languages[language]) {
+        return Prism.highlight(code, Prism.languages[language], language);
+    }
     return code;
 }
+
+// Add this mapping near the top, after highlightCode
+const codeSnippets: Record<string, { title: string; code: string; color: string }> = {
+    "personal-info": {
+        title: "About Object",
+        color: "text-teal-400",
+        code: `const about = {
+  name: "Nikola Dziwusz",
+  profession: "Business Psychology Graduate",
+  focus: ["social psychology", "cognitive psychology"],
+  passion: "understanding human behavior"
+};`
+    },
+    "bio": {
+        title: "Bio Function",
+        color: "text-orange-400",
+        code: `function getBio() {
+  return {
+    company: "Samsung",
+    position: "Full-Stack Developer",
+    education: "Business Psychology Graduate"
+  };
+}`
+    },
+    "interests": {
+        title: "Interests Array",
+        color: "text-green-400",
+        code: `const interests = [
+  "Web Development",
+  "UX Design",
+  "Psychology",
+  "Music Production",
+  "Gaming"
+];`
+    },
+    "high-school": {
+        title: "High School Object",
+        color: "text-blue-400",
+        code: `const highSchool = {
+  focus: ["mathematics", "sciences"],
+  skills: ["analytical thinking", "problem-solving"]
+};`
+    },
+    "university": {
+        title: "University Object",
+        color: "text-purple-400",
+        code: `const university = {
+  degree: "Master's",
+  major: "Business Psychology",
+  school: "SWPS University",
+  years: "2018 – 2023"
+};`
+    }
+    // ...add more if needed...
+};
 
 export function About() {
     const [openFolders, setOpenFolders] = useState({
@@ -187,7 +185,7 @@ export function About() {
     }
 
     return (
-        <section className="min-h-screen flex flex-col lg:flex-row">
+        <section className="flex flex-col lg:flex-row">
             {/* Sidebar */}
             <div
                 className={`w-full lg:w-80 bg-slate-900/50 border-b lg:border-r lg:border-b-0 border-slate-700/50 flex flex-col transition-all duration-700 ${
@@ -375,10 +373,14 @@ export function About() {
                                                     borderRadius: "0.375rem",
                                                     padding: "1rem",
                                                 }}
-                                                dangerouslySetInnerHTML={{
-                                                    __html: highlightCode(getFileContent(activeFile)),
-                                                }}
-                                            />
+                                            >
+                                                <code
+                                                    className="language-typescript"
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: highlightCode(getFileContent(activeFile), "typescript"),
+                                                    }}
+                                                />
+                                            </pre>
                                         )}
                                     </div>
                                 </div>
@@ -391,29 +393,27 @@ export function About() {
                         className="w-full lg:w-[30vw] bg-slate-900/30 border-t lg:border-l lg:border-t-0 border-slate-700/50 p-2 sm:p-4">
                         <h3 className="text-slate-400 font-mono text-xs sm:text-sm mb-4">// Code snippet showcase:</h3>
                         <div className="space-y-4">
-                            <div
-                                className="bg-slate-800/50 rounded p-2 sm:p-3 border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105">
-                                <div className="text-teal-400 font-mono text-xs mb-2">React Component</div>
-                                <pre className="text-slate-300 font-mono text-xs">
-                  {`const Developer = () => {\n  return (\n    <div>\n      <h1>Nikola Dziwusz</h1>\n      <p>Full-stack Developer</p>\n    </div>\n  );\n};`}
-                </pre>
-                            </div>
-
-                            <div
-                                className="bg-slate-800/50 rounded p-2 sm:p-3 border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105">
-                                <div className="text-orange-400 font-mono text-xs mb-2">Skills Array</div>
-                                <pre className="text-slate-300 font-mono text-xs" dangerouslySetInnerHTML={{
-                                  __html: highlightCode(`const skills = [\n  'React', 'Vue', 'Node.js',\n  'TypeScript', 'MongoDB',\n  'Psychology', 'UX Research'\n];`),
-                                }} />
-                            </div>
-
-                            <div
-                                className="bg-slate-800/50 rounded p-2 sm:p-3 border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105">
-                                <div className="text-blue-400 font-mono text-xs mb-2">Experience Object</div>
-                                <pre className="text-slate-300 font-mono text-xs" dangerouslySetInnerHTML={{
-                                  __html: highlightCode(`const currentRole = {\n  company: 'Samsung',\n  position: 'Full-stack Developer',\n  duration: '2023 - Present',\n  technologies: ['React', 'Node.js']\n};`),
-                                }} />
-                            </div>
+                            {codeSnippets[activeFile] ? (
+                                <div
+                                    className="bg-slate-800/50 rounded p-2 sm:p-3 border border-slate-700/50 hover:border-slate-600/50 transition-all duration-300 hover:scale-105">
+                                    <div className={`${codeSnippets[activeFile].color} font-mono text-xs mb-2`}>
+                                        {codeSnippets[activeFile].title}
+                                    </div>
+                                    <pre
+                                        className="text-slate-300 font-mono text-xs"
+                                    >
+                                        <code
+                                            className="language-typescript"
+                                            dangerouslySetInnerHTML={{
+                                                __html: highlightCode(codeSnippets[activeFile].code, "typescript"),
+                                            }}
+                                        />
+                                    </pre>
+                                </div>
+                            ) : (
+                                // fallback: show nothing or a default snippet
+                                <div className="text-slate-500 font-mono text-xs">No code snippet for this section.</div>
+                            )}
                         </div>
                     </div>
                 </div>

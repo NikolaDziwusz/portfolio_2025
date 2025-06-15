@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Navigation } from "@/components/navigation"
-import { Hero } from "@/components/hero"
+import { Hello } from "@/components/hero"
 import { About } from "@/components/about"
 import { Projects } from "@/components/projects"
 import { Contact } from "@/components/contact"
@@ -24,7 +24,7 @@ export default function Home() {
   const renderSection = () => {
     switch (activeSection) {
       case "_hello":
-        return <Hero />
+        return <Hello />
       case "_about-me":
         return <About />
       case "_projects":
@@ -32,7 +32,7 @@ export default function Home() {
       case "_contact-me":
         return <Contact />
       default:
-        return <Hero />
+        return <Hello />
     }
   }
 
