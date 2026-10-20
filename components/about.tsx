@@ -19,6 +19,14 @@ function highlightCode(code: string, language: string = "typescript") {
 
 // Add this mapping near the top, after highlightCode
 const codeSnippets: Record<string, { title: string; code: string; color: string }> = {
+    "experience": {
+        title: "Experience Summary",
+        color: "text-cyan-400",
+        code: `const experience = {
+  current: "Samsung · Full-stack developer",
+  focus: ["React", "Node.js", "MongoDB", "Agile/Scrum"]
+};`
+    },
     "personal-info": {
         title: "About Object",
         color: "text-teal-400",
@@ -75,6 +83,7 @@ const codeSnippets: Record<string, { title: string; code: string; color: string 
 export function About() {
     const [openFolders, setOpenFolders] = useState({
         "personal-info": true,
+        experience: true,
         education: true,
         contacts: true,
     })
@@ -116,14 +125,14 @@ export function About() {
     <span role='img' aria-label='About'>👤</span> About Me
   </div>
   <div class='text-slate-300'>
-    <span class='font-semibold text-yellow-300'>Business Psychology Graduate</span> with a strong background in <span class='text-pink-400'>social</span> and <span class='text-blue-400'>cognitive psychology</span>, passionate about <span class='italic text-green-400'>understanding human behavior</span>.<br/>
-    <span class='font-semibold text-orange-300'>Web Developer</span> for 2+ years, combining <span class='text-purple-400'>analytical</span> and <span class='text-pink-400'>creative</span> skills.<br/>
-    <span class='bg-slate-800/60 px-2 py-1 rounded text-xs text-slate-200'>Music lover</span> <span class='bg-slate-800/60 px-2 py-1 rounded text-xs text-slate-200'>Problem solver</span>
+                    <span class='font-semibold text-yellow-300'>Business Psychology graduate</span> with a strong background in <span class='text-pink-400'>social</span> and <span class='text-blue-400'>cognitive psychology</span>, passionate about understanding human behavior.<br/>
+    <span class='font-semibold text-orange-300'>Web developer</span> combining analytical thinking with creative problem-solving and user-centred solutions.<br/>
+    <span class='text-slate-300'>I am continuously developing my expertise in web development and IT while bringing a creative perspective shaped by singing and music production.</span>
   </div>
   <ul class='list-disc ml-6 text-slate-400'>
-    <li>Driven by curiosity and empathy</li>
-    <li>Enjoys singing & music production <span role='img' aria-label='music'>🎤🎶</span></li>
-    <li>Believes in <span class='text-green-300 font-semibold'>user-centric</span> solutions</li>
+    <li>Curious, empathetic and focused on practical outcomes</li>
+    <li>Interested in music, from singing to production</li>
+    <li>Focused on clear, accessible and user-centred experiences</li>
   </ul>
 </div>`
             case "bio":
@@ -139,6 +148,30 @@ export function About() {
     <span class='italic'>Currently developing</span> <span class='text-pink-400'>CMS applications</span> for <span class='text-blue-400'>Samsung Global Goals</span> charity initiative.<br/>
     <span class='text-green-400'>Passionate</span> about combining <span class='text-purple-400'>psychology insights</span> with <span class='text-orange-400'>modern web technologies</span>.
   </div>
+</div>`
+            case "experience":
+                return `<div class='space-y-4'>
+  <div class='flex items-center gap-2 text-lg font-bold text-cyan-300'>Experience</div>
+  <article class='border-l-2 border-cyan-400/60 pl-3'>
+    <div class='font-semibold text-white'>Full-stack developer · Samsung</div>
+    <div class='text-green-400 text-sm'>07.2023 – Currently · Wrocław</div>
+    <p class='text-slate-400 mt-1'>Developing and maintaining a CMS for the Samsung Global Goals charity application. Building front-end and back-end features with React, Node.js and MongoDB, collaborating with cross-functional teams, reviewing code and improving performance within an agile workflow.</p>
+  </article>
+  <article class='border-l-2 border-blue-400/60 pl-3'>
+    <div class='font-semibold text-white'>UX Researcher · Techland</div>
+    <div class='text-blue-300 text-sm'>07.2021 – 10.2022 · Wrocław</div>
+    <p class='text-slate-400 mt-1'>Supported playtests, participant management and moderation, then analysed qualitative and quantitative survey results and gameplay videos to prepare clear reports and presentations.</p>
+  </article>
+  <article class='border-l-2 border-orange-400/60 pl-3'>
+    <div class='font-semibold text-white'>Front-end developer · BonaSoft</div>
+    <div class='text-orange-300 text-sm'>05.2022 – 10.2022 · Wrocław</div>
+    <p class='text-slate-400 mt-1'>Completed the BonaAkademi development programme, combining technical training with a Scrum-based project.</p>
+  </article>
+  <article class='border-l-2 border-purple-400/60 pl-3'>
+    <div class='font-semibold text-white'>Creator of the idea · NOjam</div>
+    <div class='text-purple-300 text-sm'>10.2019 – 03.2020</div>
+    <p class='text-slate-400 mt-1'>Created a gamification-based mobile app prototype encouraging public transport use, working with a UX design student and applying psychological principles.</p>
+  </article>
 </div>`
             case "interests":
                 return `<div class='space-y-2'>
@@ -222,6 +255,13 @@ export function About() {
                                 >
                                     <Folder className="w-4 h-4 text-red-400"/>
                                     <span>bio</span>
+                                </button>
+                                <button
+                                    onClick={() => openFile("experience")}
+                                    className="flex items-center space-x-2 text-slate-400 hover:text-white font-mono text-sm p-1 hover:bg-slate-800/50 rounded w-full text-left transition-all duration-200 hover:scale-105"
+                                >
+                                    <File className="w-4 h-4 text-cyan-400"/>
+                                    <span>experience</span>
                                 </button>
                                 <button
                                     onClick={() => openFile("interests")}
@@ -337,7 +377,7 @@ export function About() {
                 </div>
 
                 {/* Code Editor */}
-                <div className="flex-1 flex flex-col lg:flex-row overflow-x-auto">
+                <div className="min-w-0 flex-1 flex flex-col lg:flex-row overflow-x-hidden">
                     <div className="flex-1 bg-slate-900/20 min-w-0">
                         {activeFile && (
                             <div className="h-full">
@@ -357,7 +397,7 @@ export function About() {
 
                                     {/* Code Content */}
                                     <div className="flex-1 p-2 sm:p-4 overflow-auto min-w-0">
-                                        {['personal-info', 'bio', 'interests', 'high-school', 'university'].includes(activeFile) ? (
+                                        {['personal-info', 'bio', 'experience', 'interests', 'high-school', 'university'].includes(activeFile) ? (
                                             <div
                                                 className="bg-slate-900/40 rounded-md p-4"
                                                 dangerouslySetInnerHTML={{
@@ -400,7 +440,7 @@ export function About() {
                                         {codeSnippets[activeFile].title}
                                     </div>
                                     <pre
-                                        className="text-slate-300 font-mono text-xs"
+                                        className="text-slate-300 font-mono text-xs whitespace-pre-wrap break-words"
                                     >
                                         <code
                                             className="language-typescript"

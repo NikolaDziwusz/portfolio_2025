@@ -39,7 +39,7 @@ export default function Home() {
   return (
       <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-teal-900">
         <Navigation activeSection={activeSection} setActiveSection={handleSectionChange} />
-        <div className={`transition-opacity duration-300 ${isTransitioning ? "opacity-0" : "opacity-100"} `}>
+        <div className={`min-w-0 overflow-x-hidden transition-opacity duration-300 ${isTransitioning ? "opacity-0" : "opacity-100"}`}>
           {renderSection()}
         </div>
       </main>
