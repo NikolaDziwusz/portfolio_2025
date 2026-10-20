@@ -125,14 +125,14 @@ export function About() {
     <span role='img' aria-label='About'>👤</span> About Me
   </div>
   <div class='text-slate-300'>
-                    <span class='font-semibold text-yellow-300'>Business Psychology graduate</span> with a strong background in <span class='text-pink-400'>social</span> and <span class='text-blue-400'>cognitive psychology</span>, passionate about understanding human behavior.<br/>
-    <span class='font-semibold text-orange-300'>Web developer</span> combining analytical thinking with creative problem-solving and user-centred solutions.<br/>
-    <span class='text-slate-300'>I am continuously developing my expertise in web development and IT while bringing a creative perspective shaped by singing and music production.</span>
+                    <span class='font-semibold text-yellow-300'>Front-End Developer</span> with 3 years of experience building scalable web applications with <span class='text-pink-400'>React</span>, <span class='text-blue-400'>Next.js</span> and <span class='text-cyan-400'>TypeScript</span>.<br/>
+    <span class='font-semibold text-orange-300'>Full-stack capable</span>, with hands-on experience in Node.js, NestJS, GraphQL, PostgreSQL and backend integrations.<br/>
+    <span class='text-slate-300'>I combine technical expertise with a Master's degree in Business Psychology to create intuitive, accessible and maintainable user-centred products.</span>
   </div>
   <ul class='list-disc ml-6 text-slate-400'>
-    <li>Curious, empathetic and focused on practical outcomes</li>
-    <li>Interested in music, from singing to production</li>
-    <li>Focused on clear, accessible and user-centred experiences</li>
+    <li>Focused on performance, accessibility and maintainable architecture</li>
+    <li>Open to Front-End and Full-Stack roles (Remote/Hybrid)</li>
+    <li>Analytical, adaptable and strongly user-centred</li>
   </ul>
 </div>`
             case "bio":
@@ -141,36 +141,41 @@ export function About() {
     <span role='img' aria-label='Bio'>📝</span> Bio
   </div>
   <div class='text-slate-300'>
-    <span class='font-semibold text-blue-300'>Full-Stack Developer</span> at <span class='bg-blue-900/60 px-2 py-1 rounded text-blue-200'>Samsung</span><br/>
-    <span class='font-semibold text-yellow-300'>Business Psychology Graduate</span>
+    <span class='font-semibold text-blue-300'>Front-End Developer</span> with <span class='bg-blue-900/60 px-2 py-1 rounded text-blue-200'>3 years of experience</span><br/>
+    <span class='font-semibold text-yellow-300'>Master's degree in Business Psychology</span>
   </div>
   <div class='text-slate-400'>
-    <span class='italic'>Currently developing</span> <span class='text-pink-400'>CMS applications</span> for <span class='text-blue-400'>Samsung Global Goals</span> charity initiative.<br/>
-    <span class='text-green-400'>Passionate</span> about combining <span class='text-purple-400'>psychology insights</span> with <span class='text-orange-400'>modern web technologies</span>.
+    <span class='italic'>Building</span> <span class='text-pink-400'>accessible, responsive applications</span> with <span class='text-blue-400'>React, Next.js and TypeScript</span>.<br/>
+    <span class='text-green-400'>Experienced</span> with <span class='text-purple-400'>full-stack integrations</span>, testing, APIs and data-driven product decisions.
   </div>
 </div>`
             case "experience":
                 return `<div class='space-y-4'>
   <div class='flex items-center gap-2 text-lg font-bold text-cyan-300'>Experience</div>
   <article class='border-l-2 border-cyan-400/60 pl-3'>
-    <div class='font-semibold text-white'>Full-stack developer · Samsung</div>
-    <div class='text-green-400 text-sm'>07.2023 – Currently · Wrocław</div>
-    <p class='text-slate-400 mt-1'>Developing and maintaining a CMS for the Samsung Global Goals charity application. Building front-end and back-end features with React, Node.js and MongoDB, collaborating with cross-functional teams, reviewing code and improving performance within an agile workflow.</p>
+    <div class='font-semibold text-white'>Front-End Developer · Dsplce.co</div>
+    <div class='text-green-400 text-sm'>08/2025 – 12/2025 · Remote</div>
+    <p class='text-slate-400 mt-1'>Led A/B testing experiments, created variations from business hypotheses, deployed frontend changes and improved the experiment delivery pipeline.</p>
   </article>
   <article class='border-l-2 border-blue-400/60 pl-3'>
-    <div class='font-semibold text-white'>UX Researcher · Techland</div>
-    <div class='text-blue-300 text-sm'>07.2021 – 10.2022 · Wrocław</div>
-    <p class='text-slate-400 mt-1'>Supported playtests, participant management and moderation, then analysed qualitative and quantitative survey results and gameplay videos to prepare clear reports and presentations.</p>
-  </article>
-  <article class='border-l-2 border-orange-400/60 pl-3'>
-    <div class='font-semibold text-white'>Front-end developer · BonaSoft</div>
-    <div class='text-orange-300 text-sm'>05.2022 – 10.2022 · Wrocław</div>
-    <p class='text-slate-400 mt-1'>Completed the BonaAkademi development programme, combining technical training with a Scrum-based project.</p>
+    <div class='font-semibold text-white'>Front-end Developer · Freelance</div>
+    <div class='text-blue-300 text-sm'>10/2024 – 05/2025 · Remote</div>
+    <p class='text-slate-400 mt-1'>Built accessible responsive UI with React, Radix UI, Tailwind CSS and Styled Components, integrated REST APIs and translated Figma designs into production components.</p>
   </article>
   <article class='border-l-2 border-purple-400/60 pl-3'>
-    <div class='font-semibold text-white'>Creator of the idea · NOjam</div>
-    <div class='text-purple-300 text-sm'>10.2019 – 03.2020</div>
-    <p class='text-slate-400 mt-1'>Created a gamification-based mobile app prototype encouraging public transport use, working with a UX design student and applying psychological principles.</p>
+    <div class='font-semibold text-white'>Full-Stack Developer · Samsung</div>
+    <div class='text-purple-300 text-sm'>07/2023 – 12/2024 · Wrocław</div>
+    <p class='text-slate-400 mt-1'>Built CMS features with React, Next.js, Node.js and NestJS, using GraphQL, Apollo, TypeORM and PostgreSQL with Cypress tests and reusable Chakra UI components.</p>
+  </article>
+  <article class='border-l-2 border-orange-400/60 pl-3'>
+    <div class='font-semibold text-white'>UX Researcher · Techland</div>
+    <div class='text-orange-300 text-sm'>10/2022 – 05/2023 · Wrocław</div>
+    <p class='text-slate-400 mt-1'>Executed qualitative and quantitative studies, coordinated playtests and prepared data-driven reports for engineering and design teams.</p>
+  </article>
+  <article class='border-l-2 border-green-400/60 pl-3'>
+    <div class='font-semibold text-white'>Front-end Developer Intern · BonaSoft</div>
+    <div class='text-green-300 text-sm'>05/2022 – 10/2022 · Wrocław</div>
+    <p class='text-slate-400 mt-1'>Built features with Vue 3, Nuxt.js and Sass, configured Vite builds and gained experience with Git and Scrum workflows.</p>
   </article>
 </div>`
             case "interests":
@@ -351,7 +356,7 @@ export function About() {
                 style={{transitionDelay: "400ms"}}
             >
                 {/* Tabs */}
-                <div className="flex border-b border-slate-700/50 bg-slate-900/30 overflow-x-auto">
+                <div className="flex min-w-0 max-w-full border-b border-slate-700/50 bg-slate-900/30 overflow-x-auto">
                     {openTabs.map((tab) => (
                         <div
                             key={tab}
@@ -399,7 +404,7 @@ export function About() {
                                     <div className="flex-1 p-2 sm:p-4 overflow-auto min-w-0">
                                         {['personal-info', 'bio', 'experience', 'interests', 'high-school', 'university'].includes(activeFile) ? (
                                             <div
-                                                className="bg-slate-900/40 rounded-md p-4"
+                                                className="min-w-0 max-w-full overflow-hidden bg-slate-900/40 rounded-md p-3 sm:p-4 break-words"
                                                 dangerouslySetInnerHTML={{
                                                     __html: getFileContent(activeFile),
                                                 }}
@@ -430,7 +435,7 @@ export function About() {
 
                     {/* Right Panel */}
                     <div
-                        className="w-full lg:w-[30vw] bg-slate-900/30 border-t lg:border-l lg:border-t-0 border-slate-700/50 p-2 sm:p-4">
+                        className="min-w-0 w-full lg:w-[30vw] bg-slate-900/30 border-t lg:border-l lg:border-t-0 border-slate-700/50 p-2 sm:p-4">
                         <h3 className="text-slate-400 font-mono text-xs sm:text-sm mb-4">// Code snippet showcase:</h3>
                         <div className="space-y-4">
                             {codeSnippets[activeFile] ? (
