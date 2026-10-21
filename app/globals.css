@@ -32,6 +32,20 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img, video, svg, canvas {
+  max-width: 100%;
+}
+
+button, a {
+  overflow-wrap: anywhere;
 }
 
 /* Code font */

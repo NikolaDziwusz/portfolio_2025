@@ -172,6 +172,36 @@ export function Projects() {
       stars: 0,
       forks: 0,
     },
+    {
+      id: 7,
+      name: "retone-studio",
+      subtitle: "_creative-studio",
+      description:
+          "Creative studio project focused on a polished digital experience, thoughtful visual design, and responsive front-end implementation.",
+      technologies: ["React", "TypeScript", "CSS"],
+      github: "https://github.com/NikolaDziwusz/retonestudio",
+      live: "https://retonestudio.vercel.app",
+      iconColor: "#3178C6",
+      icon: "TypeScript",
+      status: "Live",
+      stars: 0,
+      forks: 0,
+    },
+    {
+      id: 8,
+      name: "minimalist-portfolio",
+      subtitle: "_minimal-portfolio",
+      description:
+          "Minimal portfolio project with a clean visual language, focused content hierarchy, and responsive presentation.",
+      technologies: ["React", "TypeScript", "CSS"],
+      github: "https://github.com/NikolaDziwusz/minimalist-portfolio",
+      live: "https://minimalist-portfolio-alpha-rust.vercel.app",
+      iconColor: "#3178C6",
+      icon: "TypeScript",
+      status: "Live",
+      stars: 0,
+      forks: 0,
+    },
   ]
 
   const handleTechnologyToggle = (tech: string) => {
